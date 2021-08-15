@@ -1,13 +1,15 @@
 <template>
+<the-header></the-header>
   <the-form></the-form>
 </template>
 
 <script>
 import TheForm from "./components/layouts/FormResource/TheForm.vue";
-
+import TheHeader from "./components/layouts/TheHeader.vue";
 export default {
   components: {
     TheForm,
+    TheHeader
   },
 };
 </script>
