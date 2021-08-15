@@ -9,6 +9,7 @@
         <slot name="description"></slot>
       </p>
     </header>
+    <!--description navs-->
     <nav>
       <ul>
         <li>
@@ -82,6 +83,7 @@
         </li>
       </ul>
     </nav>
+    <!--footer-->
     <footer class="guide-footer__container">
       <div class="footer-socialIcon_container">
         <div class="social-icon">
