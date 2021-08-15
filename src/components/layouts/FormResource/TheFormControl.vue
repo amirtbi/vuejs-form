@@ -1,6 +1,6 @@
 <template>
   <div class="contact-container__form">
-    <form class="form-control">
+    <form class="form-control" @submit.prevent>
       <!--form-row-->
       <div class="form-row">
         <div class="form-row__field">
@@ -68,13 +68,21 @@
           </div>
         </div>
       </div>
-   
+      <div class="button-container">
+        <base-button @click="displayAlert" mode="action">SUBMIT</base-button>
+      </div>   
     </form>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods:{
+    displayAlert(){
+      alert("form is submitted")
+          }
+  }
+};
 </script>
 
 <style scoped>
@@ -166,5 +174,14 @@ div.form-radiobox label {
   font-family: inherit;
   font-weight: bold;
   margin-left: 0.2rem;
+}
+div.button-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-content: center;
+    width: 100%;
+    margin-top: 1rem;
+    padding: 1.2rem;
 }
 </style>
