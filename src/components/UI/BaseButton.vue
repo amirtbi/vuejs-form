@@ -29,13 +29,5 @@ export default {
     background-color: var(--accentColor);
     color:black;
 }
-div.button-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-content: center;
-    width: 100%;
-    margin-top: 1rem;
-    padding: 1.2rem;
-}
+
 </style>
