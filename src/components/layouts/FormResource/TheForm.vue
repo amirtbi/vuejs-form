@@ -10,19 +10,18 @@
       </template>
     </contact-guide>
     <!--user input form-->
-    <div class="contact-container__form">
-      <form class="form-control">
-        <h1>welcome to my form design</h1>
-      </form>
-    </div>
+    <form-control></form-control>
+    
   </div>
 </template>
 
 <script>
 import ContactGuide from "./TheContactGuide.vue";
+import FormControl from './TheFormControl.vue';
 export default {
   components: {
     ContactGuide,
+    FormControl
   },
 };
 </script>
@@ -33,10 +32,8 @@ div.contact-container {
   flex-direction: row;
   width: 1000px;
   margin: 10rem auto;
-
   box-shadow: 0 2px 10px 2px rgb(216, 216, 216);
   border-radius: 10px;
-
   background-color: white;
 }
 </style>
