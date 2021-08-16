@@ -1,9 +1,9 @@
 <template>
     <div class="rating-container">
         <ul>
-            <li><button>Poor</button></li>
-            <li><button>Medium</button></li>
-            <li><button>Great</button></li>
+            <li :class="{active:activeOption==='poor'}"><button @click="activateOption('poor')" type="button">Poor</button></li>
+            <li :class="{active:activeOption==='medium'}"><button @click="activateOption('medium')" type="button">Medium</button></li>
+            <li :class="{active:activeOption==='great'}"><button @click="activateOption('great')" type="button">Great</button></li>
         </ul>
     </div>
 </template>
@@ -11,10 +11,26 @@
 
 <script>
 export default {
-    
+    props:["modelValue"],
+    emits:["update:modelValue"],
+    data(){
+        return{
+            activeOption:this.modelValue,
+        }
+    },
+    methods:{
+        activateOption(option){
+            this.activeOption = option;
+            this.$emit("update:modelValue",option);
+        }
+    },
+
 }
 </script>
 <style scoped>
+.active{
+    border:1px solid purple;
+}
 div.rating-container{
     display: flex;
     flex-direction: row;
@@ -35,8 +51,8 @@ li{
     margin: 0.2rem;
 }
 button{
-    background-color: var(--accentColor);
-    color: purple;
+    
+    color: black;
     border:none;
     outline: none;
     padding: 0.2rem 1rem;
