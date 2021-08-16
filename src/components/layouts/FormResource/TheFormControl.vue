@@ -4,14 +4,21 @@
     <form class="form-control" @submit.prevent="showUserInput">
       <!--form-row-->
       <div class="form-row">
-        <div class="form-row__field">
+        <div
+          class="form-row__field"
+          :class="{ invalid: userNameValidity === 'invalid' }"
+        >
           <label for="firstname">First Name</label>
           <input
             type="text"
             id="firstname"
             name="firstname"
             v-model.trim="userName"
+            @blur="userNameValidation"
           />
+          <small class="caution-message" v-if="userNameValidity === 'invalid'"
+            >Please fill the blank input!</small
+          >
         </div>
         <div class="form-row__field">
           <label for="lastname">Last Name</label>
@@ -49,6 +56,9 @@
           </select>
         </div>
       </div>
+      <rating-control
+        v-model="rating"
+      ></rating-control>
       <!--user interest checkboxes-->
       <div class="form-row form-row--justify">
         <div class="form-row--checkbox">
@@ -116,7 +126,12 @@
 
       <div class="button-container">
         <div class="confirm-container">
-          <input type="checkbox" id="confirmed-terms" name="confirmed-terms" v-model="confirmed" />
+          <input
+            type="checkbox"
+            id="confirmed-terms"
+            name="confirmed-terms"
+            v-model="confirmed"
+          />
           <label for="confirmed-terms">Do you agree all terms?</label>
         </div>
         <base-button mode="action">SUBMIT</base-button>
@@ -126,7 +141,11 @@
 </template>
 
 <script>
+import RatingControl from "./RatingControl.vue";
 export default {
+  components: {
+    RatingControl,
+  },
   data() {
     return {
       userName: "",
@@ -134,7 +153,9 @@ export default {
       referre: "Google",
       interest: [],
       how: null,
-      confirmed:false,
+      confirmed: false,
+      rating: null,
+      userNameValidity: "pending",
     };
   },
 
@@ -162,10 +183,21 @@ export default {
 
       //reseting radioboxes
       this.how = null;
-      //show true/false checkbox 
+      //show true/false checkbox
       console.log(this.confirmed);
       this.confirmed = false;
+      //show rating
+      console.log("rating :" + this.rating);
+      this.rating = null;
     },
+    userNameValidation() {
+      if (this.userName === "") {
+        this.userNameValidity = "invalid";
+      } else {
+        this.userNameValidity = "valid";
+      }
+    },
+   
   },
 };
 </script>
@@ -218,7 +250,16 @@ div.form-row__field label {
   font-family: inherit;
   filter: opacity(0.5);
 }
+div.form-row__field.invalid input {
+  border-bottom: 2px solid red;
+}
+div.form-row__field.invalid label {
+  color: red;
+}
 
+small.caution-message {
+  color: red;
+}
 select {
   width: 70%;
   padding: 0.5rem;
@@ -267,13 +308,13 @@ div.button-container {
   margin-top: 1rem;
   padding: 1.2rem;
 }
-div.confirm-container{
+div.confirm-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
-div.confirm-container label{
+div.confirm-container label {
   font-weight: bold;
   font-family: inherit;
   margin-left: 0.2rem;
