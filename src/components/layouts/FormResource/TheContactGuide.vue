@@ -215,7 +215,7 @@ div.contact-container__guide {
   display: flex;
   flex-direction: column;
   width: 400px;
-  height: 500px;
+  
   max-width: 450px;
   min-width: 400px;
   background-color: var(--primaryColor);
@@ -281,11 +281,11 @@ div.footer-bubble_container {
 }
 div.first-bubble {
   right: -131px;
-  top: -61px;
+  top: 0px;
 }
 div.second-bubble {
   right: 72px;
-  top: -45px;
+  top: 31px;
 }
 div.first-bubble svg {
   fill: var(--primaryBubbleColor);
@@ -305,7 +305,7 @@ div.footer-socialIcon_container{
     justify-content: flex-start;
     align-items: center;
     position: absolute;
-    bottom: -108px;
+    bottom: -221px;
     width: 100%;
     padding:1rem;
 }
