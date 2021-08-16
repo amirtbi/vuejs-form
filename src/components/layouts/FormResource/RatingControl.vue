@@ -2,9 +2,9 @@
     <div class="rating-container">
         <p id="rating-description">Rate your experience</p>
         <ul>
-            <li :class="{active:activeOption==='poor'}"><button @click="activateOption('poor')" type="button">Poor</button></li>
-            <li :class="{active:activeOption==='medium'}"><button @click="activateOption('medium')" type="button">Medium</button></li>
-            <li :class="{active:activeOption==='great'}"><button @click="activateOption('great')" type="button">Great</button></li>
+            <li :class="{active:activeModelValue==='poor'}"><button @click="activateOption('poor')" type="button">Poor</button></li>
+            <li :class="{active:activeModelValue==='medium'}"><button @click="activateOption('medium')" type="button">Medium</button></li>
+            <li :class="{active:activeModelValue==='great'}"><button @click="activateOption('great')" type="button">Great</button></li>
         </ul>
     </div>
 </template>
@@ -14,9 +14,15 @@
 export default {
     props:["modelValue"],
     emits:["update:modelValue"],
-    data(){
-        return{
-            activeOption:this.modelValue,
+    // data(){
+    //     return{
+    //         activeOption:this.modelValue,
+    //     }
+    // },
+    //by activeModelValue, the value of ratign control will be reseted after submiting form
+    computed:{
+        activeModelValue(){
+            return this.modelValue
         }
     },
     methods:{

@@ -56,9 +56,11 @@
           </select>
         </div>
       </div>
-      <rating-control
-        v-model="rating"
-      ></rating-control>
+      <div>
+        <rating-control
+          v-model="rating"
+        ></rating-control>
+      </div>
       <!--user interest checkboxes-->
       <div class="form-row form-row--justify">
         <div class="form-row--checkbox">
@@ -220,6 +222,7 @@ div.form-row {
   justify-content: space-between;
   align-items: center;
 }
+
 div.form-row--justify {
   justify-content: flex-start;
 }
