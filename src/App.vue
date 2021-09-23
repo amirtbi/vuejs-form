@@ -1,5 +1,5 @@
 <template>
-<the-header></the-header>
+  <the-header></the-header>
   <the-form></the-form>
 </template>
 
@@ -9,7 +9,7 @@ import TheHeader from "./components/layouts/TheHeader.vue";
 export default {
   components: {
     TheForm,
-    TheHeader
+    TheHeader,
   },
 };
 </script>
